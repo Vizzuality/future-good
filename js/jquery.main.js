@@ -2,6 +2,7 @@ jQuery(function() {
 	initAnchors();
 	initCustomForms();
 	initStickyScrollBlock();
+	initEnrollForm();
 });
 
 
@@ -20,6 +21,35 @@ function initAnchors() {
 // initialize custom form elements
 function initCustomForms() {
 	jcf.replaceAll();
+}
+
+
+// initialize form ajax
+function initEnrollForm() {
+	$(document).on('submit', '#enroll', function(e) {
+		e && e.preventDefault();
+
+		var serializedData = $('#enroll').serialize();
+
+		$.ajax({
+			type: "GET",
+			url: `https://script.google.com/macros/s/AKfycbz4Lar2FtOZw6UFQbaD-hp3_FsSKbea-0gGlyr6GxHirsf-axbE/exec?${serializedData}`,
+			error: function (jqXHR, textStatus, errorMessage) {
+				console.error(errorMessage);
+				$('#enroll-msg').html(`<p class="error">Ups!! There was an error, try again</p>`);
+			},
+			success: function (data) {
+				if (!data.result) {
+					$('#enroll-msg').html(`<p class="success">Thank you for signing up! We’ll be in touch soon!</p>`);
+				} else {
+					$('#enroll-msg').html(`<p class="error">Ups!! There was an error, try again</p>`);
+				}
+
+			}
+		});		
+
+		return false;
+	})
 }
 
 

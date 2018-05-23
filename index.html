@@ -130,7 +130,7 @@
 						<p>The standard price for this course is $2,600 but we are offering a special introductory rate of $2,000. Enroll now to take
 						advantage of this offer.</p>
 						<div class="form-group">
-							<a class="btn btn-download" href="http://example.com/files/myfile.pdf" target="_blank">Download PDF</a>
+							<a class="btn btn-download" href="https://drive.google.com/file/d/1zhYBgtpzNpfq0KOZvW67ya5s22m48fqo/view" target="_blank">Download PDF</a>
 						</div>
 						<div class="contact-block">
 							<span>Got more questions? Ask us anything at</span>
@@ -155,8 +155,10 @@
 				</div>
 			</div>
 			
-			<form action="#">
-				<div id="enroll" class="form">
+
+
+			<form id="enroll" action="#">
+				<div class="form">
 					<div class="container flex-holder">
 						<div class="column">
 							<h2>Enroll Now!</h2>
@@ -167,16 +169,18 @@
 								12 people on this course.</p>
 							</div>
 							<div class="form-group">
-								<label for="field-1">Name</label>
-								<input id="field-1" type="text" placeholder="Text" required/>
+								<label for="name">Name</label>
+								<input id="name" type="text" name="name" placeholder="Text" required/>
 							</div>
 							<div class="form-group">
-								<label for="mail">Email</label>
-								<input id="mail" type="email" placeholder="hello@vizzuality.com" required/>
+								<label for="email">Email</label>
+								<input id="email" type="email" name="email" placeholder="hello@vizzuality.com" required/>
 							</div>
 							<div class="form-group btn-area">
 								<button type="submit" class="btn btn-default">Send</button>
 							</div>
+
+							<div id="enroll-msg"></div>
 						</div>
 					</div>
 				</div>
