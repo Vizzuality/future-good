@@ -30,19 +30,20 @@ function initEnrollForm() {
 		e && e.preventDefault();
 
 		var serializedData = $('#enroll').serialize();
+		$('#enroll-msg').html('');
 
 		$.ajax({
 			type: "GET",
-			url: `https://script.google.com/macros/s/AKfycbz4Lar2FtOZw6UFQbaD-hp3_FsSKbea-0gGlyr6GxHirsf-axbE/exec?${serializedData}`,
+			url: `https://script.google.com/macros/s/AKfycbwNT4nfU6m0VtmmFq8axR6m7pYg2iw_Q94ff6NPk-MRbIa473o/exec?${serializedData}`,
 			error: function (jqXHR, textStatus, errorMessage) {
 				console.error(errorMessage);
 				$('#enroll-msg').html(`<p class="error">Ups!! There was an error, try again</p>`);
 			},
 			success: function (data) {
-				if (!data.result) {
-					$('#enroll-msg').html(`<p class="success">Thank you for signing up! We’ll be in touch soon!</p>`);
-				} else {
+				if (data && typeof data.result !== undefined && data.result === 'error') {
 					$('#enroll-msg').html(`<p class="error">Ups!! There was an error, try again</p>`);
+				} else {
+					$('#enroll-msg').html(`<p class="success">Thank you for signing up! We’ll be in touch soon!</p>`);
 				}
 
 			}
