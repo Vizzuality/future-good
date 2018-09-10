@@ -342,14 +342,14 @@ nav {
 
 	li {
 		margin-bottom: 21px;
-		width: 48%;
+		width: 100%;
 
 		@include media('>=tablet') {
-			width: 34.8%;
+			width: 48%;
 		}
 
 		@include media('>=desktop') {
-			width: 19%;
+			width: 24%;
 		}
 	}
 
@@ -388,6 +388,13 @@ nav {
 
 .alt-section {
 	color: $second-text-color;
+
+	a {
+		color: $second-text-color;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
 
 .form {
